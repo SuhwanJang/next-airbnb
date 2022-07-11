@@ -15,6 +15,9 @@ import {
   Stack,
   Select,
   Flex,
+  Text,
+  Link,
+  Divider,
 } from '@chakra-ui/react';
 import { Field, Form, Formik, FormikProps, FieldInputProps } from 'formik';
 import React from 'react';
@@ -96,6 +99,10 @@ export default function SignUpModal({ isOpen, onClose }: Iprops) {
                       </FormControl>
                     )}
                   </Field>
+                  <Text fontSize="md" fontWeight="bold">
+                    생일
+                  </Text>
+                  <Text>만 18세 이상의 성인만 회원으로 가입할 수 있습니다.</Text>
                   <Flex gap="3">
                     <Field name="month">
                       {({
@@ -156,16 +163,22 @@ export default function SignUpModal({ isOpen, onClose }: Iprops) {
                     </Field>
                   </Flex>
                 </Stack>
-                <Button mt={4} colorScheme="teal" isLoading={props.isSubmitting} type="submit">
+                <Button mt={4} width="100%" colorScheme="red" isLoading={props.isSubmitting} type="submit">
                   가입하기
                 </Button>
               </Form>
             )}
           </Formik>
+          <Divider marginTop="5" color="gray.300" />
         </ModalBody>
 
-        <ModalFooter>
-          <Button variant="ghost">Secondary Action</Button>
+        <ModalFooter justifyContent="flex-start">
+          <Text>
+            이미 계정이 있나요?{' '}
+            <Link href="/" color="blue">
+              로그인
+            </Link>
+          </Text>
         </ModalFooter>
       </ModalContent>
     </Modal>
